@@ -12,11 +12,11 @@
 			DOM.playerJoystick.addEventListener('click' , player.increaseScore);
 		},
 		initScore : function(){
-			//if player already exists, update the score 
+			//if player already exists, update the score
 			// else do nothing
 		},
 		increaseScore : function(){
-		//if game connection succeded, send currentScore+1 
+		//if game connection succeded, send currentScore+1
 		}
 	};
 
@@ -41,5 +41,5 @@
 	};
 
 	window.addEventListener("load" , player.init);
-	window.addEventListener("load" , connection.inits)
+	window.addEventListener("load" , connection.init)
 })()

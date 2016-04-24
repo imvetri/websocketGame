@@ -7,6 +7,7 @@ var connectionCallback = function( request , response ){
 
 
 http.createServer( connectionCallback ).listen(8080);
+//working and add websockets here
 
 /* following explains in detail how server starts.
 

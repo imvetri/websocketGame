@@ -18,16 +18,23 @@ http.createServer( connectionCallback ).listen(8080);
 Todo:
 following code is tested for request as a connection object and everything seems to be working fine .
 need to test the same for response as a connections
+Result:
+tried that. but the connection event didnt trigger any event on response to a connection. you can try this by uncommenting
+lines 25 - 39
 
 var server = http.createServer(),
     requestHandler = function( request , response ) {
 
         console.log('request '+request);
-        console.log('response '+response);
-
-    };
+        response.writeHead(200);
+        response.end("over");
+    },
+    responseHandler = function(a,b){
+        console.log('response');
+    }
 // here connection event is the request event
 server
     .listen('8080')
-    .on('request' , requestHandler);
+    .on('request' , requestHandler)
+    .on('response' , responseHandler);
 */

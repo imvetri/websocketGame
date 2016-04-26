@@ -37,7 +37,6 @@ var wsSetting = {
         onMessage: function (message) {
             if (message.type === 'utf8') {
                 console.log('Message recieved - ' + message.utf8Data);
-                connection.sendUTF(message.utf8Data);
             }
         },
         onClose: function (reasonCode, description) {

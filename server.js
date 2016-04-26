@@ -22,31 +22,37 @@ var wsServer = new ws({
     });
 
 //websocket functions
-var onMessageCallback = function( message ){
-        if( message.type === 'utf8' ) {
-            console.log( 'Message recieved - ' + message.utf8Data );
-            connection.sendUTF( message.utf8Data );
-        }
-        else if( message.type === 'binary' ){
-            console.log( 'Message received lenght of ' + message.binaryData.length );
-            connection.sendBytes( message.binaryData );
-        }
-    },
-    onCloseCallback = function( reasonCode , description ){
-        console.log( 'Disconnected ');
-    },
-    websocketCallback = function( request ){
-        
-        var connection = request.accept( 'echo-protocol' , request.origin );
+var wsSetting = {
+
+    connection: function (request) {
+
+        var connection = request.accept('echo-protocol', request.origin);
         console.log('Request Accepted');
 
-        connection.on( 'message' , onMessageCallback );
-        connection.on( 'close' , onCloseCallback )
-    };
+        connection.on('message', wsSetting.eventCallbacks.onMessage);
+        connection.on('close', wsSetting.eventCallbacks.onClose);
+    },
+    
+    eventCallbacks: {
+        onMessage: function (message) {
+            if (message.type === 'utf8') {
+                console.log('Message recieved - ' + message.utf8Data);
+                connection.sendUTF(message.utf8Data);
+            }
+            else if (message.type === 'binary') {
+                console.log('Message received lenght of ' + message.binaryData.length);
+                connection.sendBytes(message.binaryData);
+            }
+        },
+        onClose: function (reasonCode, description) {
+            console.log('Disconnected ');
+        }
+    }
+};
 
 //server executions
 server.listen(serverPort , ()=> console.log('Server Listening at port '+serverPort)); //Refer to #1 for under-the-hood working of server listen
 
 
 //webserver executions
-wsServer.on( ' request' , websocketCallback );
+wsServer.on( 'request' , wsSetting.connection );

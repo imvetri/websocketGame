@@ -32,16 +32,12 @@ var wsSetting = {
         connection.on('message', wsSetting.eventCallbacks.onMessage);
         connection.on('close', wsSetting.eventCallbacks.onClose);
     },
-    
+
     eventCallbacks: {
         onMessage: function (message) {
             if (message.type === 'utf8') {
                 console.log('Message recieved - ' + message.utf8Data);
                 connection.sendUTF(message.utf8Data);
-            }
-            else if (message.type === 'binary') {
-                console.log('Message received lenght of ' + message.binaryData.length);
-                connection.sendBytes(message.binaryData);
             }
         },
         onClose: function (reasonCode, description) {

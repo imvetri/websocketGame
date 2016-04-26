@@ -36,22 +36,13 @@ var onMessageCallback = function( message ){
         console.log( 'Disconnected ');
     },
     websocketCallback = function( request ){
-
-        if( !isOriginAllowed( request.origin ) ){
-            request.reject();
-            return;
-        }
-
+        
         var connection = request.accept( 'echo-protocol' , request.origin );
         console.log('Request Accepted');
 
         connection.on( 'message' , onMessageCallback );
         connection.on( 'close' , onCloseCallback )
-    },
-    isOriginAllowed = function( origin ){
-        return true;
     };
-
 
 //server executions
 server.listen(serverPort , ()=> console.log('Server Listening at port '+serverPort)); //Refer to #1 for under-the-hood working of server listen

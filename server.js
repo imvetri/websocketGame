@@ -7,6 +7,7 @@ var http = require('http'),
 var serverConnectionCallback = function( request , response ){
         console.log('Request received at the server');
         response.writeHead('200');
+        response.write('You are welcome to my world');
         response.end();
     };
 
@@ -50,4 +51,4 @@ server.listen(serverPort , ()=> console.log('Server Listening at port '+serverPo
 
 
 //webserver executions
-wsServer.on( 'request' , wsSetting.connection );
+//wsServer.on( 'request' , wsSetting.connection );

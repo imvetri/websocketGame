@@ -7,7 +7,7 @@ var http = require('http'),
 var serverConnectionCallback = function( request , response ){
         console.log('Request received at the server');
         response.writeHead('200');
-        response.write('You are welcome to my world');
+        response.write('hellow there , welcome to my world');
         response.end();
     };
 
@@ -15,6 +15,9 @@ var serverConnectionCallback = function( request , response ){
 var server = http.createServer( serverConnectionCallback ) ,
     serverPort = '8080';
 
+//openshift configuration
+var ipaddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
+var port      = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 
 //websockets variables
 var wsServer = new ws({
@@ -47,8 +50,8 @@ var wsSetting = {
 };
 
 //server executions
-server.listen(serverPort , ()=> console.log('Server Listening at port '+serverPort)); //Refer to #1 for under-the-hood working of server listen
+server.listen(port , ipaddress , ()=> console.log('Server Listening at port '+serverPort)); //Refer to #1 for under-the-hood working of server listen
 
 
 //webserver executions
-//wsServer.on( 'request' , wsSetting.connection );
+wsServer.on( 'request' , wsSetting.connection );

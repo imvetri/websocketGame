@@ -27,15 +27,16 @@ var indexFile = 'waterIsHere.html',
 //functions
 var serverConnectionCallback = function( request , response ){
 
+    var fileToServe = listOfURLs[request.url];
     //check whether request URL is available in list of URLS
-    if( listOfURLs[request.url] !== undefined ){
-        var fileToServe = request.url;
+    if( fileToServe !== undefined ){
         respondWithFile( response , fileToServe);
-        console.log('Request received at the server ' + request.url);
+        console.log('Request received at the server ' + fileToServe);
 
     }
     else{
-        console.log('Request ignored')
+        response.end();
+        console.log('Request ignored');
     }
 
 };
@@ -49,10 +50,10 @@ var respondWithFile = function( response , file ){
             'Content-Type' : 'text/html' ,
             'Content-Length' : data.length
         };
-        console.log('File read complete...');
         response.writeHead( 200 , responseHead);
         response.write( data );
         response.end();
+        console.log('File read complete...');
     };
     fs.readFile( file , readCompleteCallback );
 }

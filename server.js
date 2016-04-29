@@ -21,39 +21,48 @@ var indexFile = 'waterIsHere.html',
         '/' : indexFile,
         '/magicMix.css' : cssFile,
         '/gameStartsHere.js' : jsFile
+    },
+    fileTypes = {
+        '/' : 'html',
+        'css' : 'css',
+        'js' : 'javascript'
     };
 
 //move to server-content only file
 //functions
 var serverConnectionCallback = function( request , response ){
 
-    var fileToServe = listOfURLs[request.url];
-    //check whether request URL is available in list of URLS
-    if( fileToServe !== undefined ){
-        respondWithFile( response , fileToServe);
-        console.log('Request received at the server ' + fileToServe);
+        var fileToServe = listOfURLs[request.url];
+        //check whether request URL is available in list of URLS
+        if( fileToServe !== undefined ){
+            respondWithFile( request , response , fileToServe);
+        }
+        else{
+            response.write(' You will be given no - data ');
+            response.end();
+            console.log('Request ignored');
+        }
 
-    }
-    else{
-        response.end();
-        console.log('Request ignored');
-    }
+    },
+    getResponseHead = function( request , data ) {
+        var responseHead =  {
+            'Content-Type' : 'text/'+fileTypes[request.url.split('.').pop()] ,
+            'Content-Length' : data.length
+        };
+        return responseHead;
 
-};
+    };
 
 //move to file-related file
 //file read and serve in response
-var respondWithFile = function( response , file ){
+var respondWithFile = function( request , response , file ){
 
     var readCompleteCallback = function( err , data ){
-        var responseHead =  {
-            'Content-Type' : 'text/html' ,
-            'Content-Length' : data.length
-        };
-        response.writeHead( 200 , responseHead);
+
+        response.writeHead( 200 , getResponseHead( request , data ) );
         response.write( data );
         response.end();
-        console.log('File read complete...');
+        console.log( 'File'+ file+ ' read complete...' );
     };
     fs.readFile( file , readCompleteCallback );
 }

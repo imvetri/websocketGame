@@ -3,7 +3,9 @@ body{
 }
 header{
 	height : 100vw;
+	background-color: "red";
 }
 footer{
 	height : 70vw;
+	background-color: "blue";
 }

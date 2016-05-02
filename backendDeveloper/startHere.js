@@ -10,11 +10,11 @@
 //dependencies
 var http = require('http'),
     ws = require('websocket').server,
-    respondWithFile = require('./fileProvider').respondWithFile,
-    folderPath = './frontendDeveloper/';
+    respondWithFile = require('./fileProvider').respondWithFile;
 
 //upon refactoring - remove this to external file
-var indexFile = folderPath + 'waterIsHere.html',
+var folderPath = './frontendDeveloper/',
+    indexFile = folderPath + 'waterIsHere.html',
     cssFile = folderPath + 'magicMix.css',
     jsFile = folderPath + 'gameStartsHere.js',
     listOfURLs = {
@@ -40,7 +40,7 @@ var serverConnectionCallback = function( request , response ){
 
 };
 
-// Dont move to 
+// Dont move to
 //server variables
 var server = http.createServer( serverConnectionCallback ) ,
     serverPort = '8080';

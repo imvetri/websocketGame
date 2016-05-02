@@ -2,7 +2,6 @@
  Todo
  1. rename this as "startHere.js"
  2. create seperate package for dependencies and import it here
- 3. create seprate package for file read and write and import it here
  4. create speerate package for websocket and import it here
 
  this file should enable reader to see only server start and websocket start.
@@ -11,7 +10,7 @@
 //dependencies
 var http = require('http'),
     ws = require('websocket').server,
-    fs = require('fs'),
+    respondWithFile = require('./fileProvider').respondWithFile,
     folderPath = './frontendDeveloper/';
 
 //upon refactoring - remove this to external file
@@ -22,53 +21,26 @@ var indexFile = folderPath + 'waterIsHere.html',
         '/' : indexFile,
         '/magicMix.css' : cssFile,
         '/gameStartsHere.js' : jsFile
-    },
-    fileTypes = {
-        '/' : 'html',
-        'css' : 'css',
-        'js' : 'javascript'
     };
 
 //move to server-content only file
 //functions
 var serverConnectionCallback = function( request , response ){
 
-        var fileToServe = listOfURLs[request.url];
-        //check whether request URL is available in list of URLS
-        if( fileToServe !== undefined ){
-            respondWithFile( request , response , fileToServe);
-        }
-        else{
-            response.write(' You will be given no - data ');
-            response.end();
-            console.log('Request ignored');
-        }
-
-    },
-    getResponseHead = function( request , data ) {
-        var responseHead =  {
-            'Content-Type' : 'text/'+fileTypes[request.url.split('.').pop()] ,
-            'Content-Length' : data.length
-        };
-        return responseHead;
-
-    };
-
-//move to file-related file
-//file read and serve in response
-var respondWithFile = function( request , response , file ){
-
-    var readCompleteCallback = function( err , data ){
-
-        response.writeHead( 200 , getResponseHead( request , data ) );
-        response.write( data );
+    var fileToServe = listOfURLs[request.url];
+    //check whether request URL is available in list of URLS
+    if( fileToServe !== undefined ){
+        respondWithFile( request , response , fileToServe);
+    }
+    else{
+        response.write(' You will be given no - data ');
         response.end();
-        console.log( 'File read complete... ' + file);
-    };
-    fs.readFile( file , readCompleteCallback );
-}
+        console.log('Request ignored');
+    }
 
-// move to server file
+};
+
+// Dont move to 
 //server variables
 var server = http.createServer( serverConnectionCallback ) ,
     serverPort = '8080';

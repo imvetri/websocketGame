@@ -11,12 +11,13 @@
 //dependencies
 var http = require('http'),
     ws = require('websocket').server,
-    fs = require('fs');
+    fs = require('fs'),
+    folderPath = './frontendDeveloper/';
 
 //upon refactoring - remove this to external file
-var indexFile = 'waterIsHere.html',
-    cssFile = 'magicMix.css',
-    jsFile = 'gameStartsHere.js',
+var indexFile = folderPath + 'waterIsHere.html',
+    cssFile = folderPath + 'magicMix.css',
+    jsFile = folderPath + 'gameStartsHere.js',
     listOfURLs = {
         '/' : indexFile,
         '/magicMix.css' : cssFile,
@@ -62,7 +63,7 @@ var respondWithFile = function( request , response , file ){
         response.writeHead( 200 , getResponseHead( request , data ) );
         response.write( data );
         response.end();
-        console.log( 'File'+ file+ ' read complete...' );
+        console.log( 'File read complete... ' + file);
     };
     fs.readFile( file , readCompleteCallback );
 }

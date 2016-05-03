@@ -6,7 +6,7 @@
 var fs = require('fs');
 
 //local variables
-var fileTypes = {
+var _fileTypes = {
     '/' : 'html',
     'css' : 'css',
     'js' : 'javascript'
@@ -16,7 +16,7 @@ var fileTypes = {
 //local functions
 var getResponseHead = function( request , data ) {
     var responseHead =  {
-        'Content-Type' : 'text/'+fileTypes[request.url.split('.').pop()] ,
+        'Content-Type' : 'text/'+_fileTypes[request.url.split('.').pop()] ,
         'Content-Length' : data.length
     };
     return responseHead;

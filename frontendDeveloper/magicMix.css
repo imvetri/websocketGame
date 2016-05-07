@@ -1,11 +1,12 @@
 body{
 	height:100%;
+	margin :0px;
 }
 header{
-	height : 100vw;
-	background-color: "red";
+	height : 98vh;
+	background-color: darkseagreen;
 }
 footer{
-	height : 70vw;
-	background-color: "blue";
+	height : 2vh;
+	background-color: cyan;
 }

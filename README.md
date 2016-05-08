@@ -2,6 +2,10 @@
 actively working on
 
 
-To install a local copy, clone the repo and run 
+Clone this repo an run
+npm install
+npm start
 
-npm init
+
+
+App will be available at localhost:8080

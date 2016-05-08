@@ -46,10 +46,15 @@ var respondWithFile = function( request , response ){
     console.log(file +" request is received");
     var readCompleteCallback = function( err , data ){
 
-        response.writeHead( 200 , getResponseHead( request , data ) );
-        response.write( data );
-        response.end();
-        console.log( 'File read complete... ' + file);
+        if(err){
+            response.writeHead(404 , {});
+            response.end();
+        }
+        else{
+            response.writeHead( 200 , getResponseHead( request , data ) );
+            response.write( data );
+            response.end();
+        }
     };
     fs.readFile( file , readCompleteCallback );
 };

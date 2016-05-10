@@ -6,9 +6,15 @@
 Window.player = (function() {
     var player = {
         score: 0,
-        DOM: DOM,
+        DOM: "DOM",
         init: function () {
-
+            var ls = localStorage;
+            //if first time game launch, then prompt for player name
+            if(ls.getItem('freshGame') == null){
+              ls.setItem('freshGame' , 'true');
+              Window.gameState['STARTED'] = true;
+            }
+            // else do nothing
         },
         initScore: function () {
             //if player already exists, update the score

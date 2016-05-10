@@ -8,7 +8,7 @@
 
 
 	var connectionManager = Window.connectionManager,
-		player = Window.player;
+			player = Window.player;
 
 	console.log(connectionManager);
 	console.log(player);

@@ -14,7 +14,13 @@ window.gameState = (function(){
                   window.localStorage.setItem('freshGame' , 'true');
                   return true;
                 }
-              })()
+                else {
+                  return false;
+                }
+              })(),
+    'setPlayerName' : function(playerName){
+      window.localStorage.setItem('playerName',playerName );
+    }
     };
   return gameState;
 })();

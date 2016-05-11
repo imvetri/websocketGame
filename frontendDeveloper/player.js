@@ -8,7 +8,10 @@ window.player = (function() {
         score: 0,
         DOM: "DOM",
         init: function () {
-          if( window.gameState['FRESH'] )
+          if( window.gameState['FRESH'] ){
+            var playetName = window.prompt();
+            window.gameState.setPlayerName( playetName );
+          }
             // else do nothing
         },
         initScore: function () {

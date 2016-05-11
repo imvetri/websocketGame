@@ -9,5 +9,5 @@
 
 	var connectionManager = window.connectionManager,
 			player = window.player;
-
+  player.init();
 })();

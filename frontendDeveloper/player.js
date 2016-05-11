@@ -3,12 +3,12 @@
  * This file is a dependency file. Should get executed along with other dependency files before other files get executed
  */
 
-Window.player = (function() {
+window.player = (function() {
     var player = {
         score: 0,
         DOM: "DOM",
         init: function () {
-
+          if( window.gameState['FRESH'] )
             // else do nothing
         },
         initScore: function () {

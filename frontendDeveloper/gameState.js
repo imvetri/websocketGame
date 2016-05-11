@@ -3,7 +3,7 @@
  * Created by imvetri on 5/7/16.
  * This file is a dependency file. Should get executed along with other dependency files before other files get executed
  */
-Window.gameState = (function(){
+window.gameState = (function(){
   var gameState = {
     'PAUSED' : false,
     'ENDED' : false,
@@ -14,7 +14,7 @@ Window.gameState = (function(){
                   window.localStorage.setItem('freshGame' , 'true');
                   return true;
                 }
-                })()
-              };
+              })()
+    };
   return gameState;
 })();

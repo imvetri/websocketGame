@@ -7,7 +7,7 @@
 	};
 
 
-	var connectionManager = Window.connectionManager,
-			player = Window.player;
+	var connectionManager = window.connectionManager,
+			player = window.player;
 
 })();

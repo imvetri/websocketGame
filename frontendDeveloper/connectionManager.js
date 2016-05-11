@@ -4,7 +4,7 @@
  */
 
 
-Window.connectionManager = (function(){
+window.connectionManager = (function(){
     var connectionManagerObj = {
         init : function(){
             //initiate websockt connection here

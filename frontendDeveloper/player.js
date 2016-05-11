@@ -8,7 +8,7 @@ Window.player = (function() {
         score: 0,
         DOM: "DOM",
         init: function () {
-            
+
             // else do nothing
         },
         initScore: function () {

@@ -1,5 +1,9 @@
-Window.gameState = (function(){
 
+/**
+ * Created by imvetri on 5/7/16.
+ * This file is a dependency file. Should get executed along with other dependency files before other files get executed
+ */
+Window.gameState = (function(){
   var gameState = {
     'PAUSED' : false,
     'ENDED' : false,

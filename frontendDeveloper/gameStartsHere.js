@@ -1,13 +1,23 @@
 (function(){
 	"use strict";
-	//this is bad. each time you access properity DOM will be accessed
-	var DOM = {
-		playerRank : document.getElementById('playerRank'),
-		playerJoystick : document.getElementById('playerJoystick')
-	};
 
+	//if old game then create new player using saved player data
+	var playerName , playerScore;
 
-	var connectionManager = window.connectionManager,
-			player = window.player;
-  player.init();
+	if(localStorage.getItem('oldGame') == true ){
+		 playerName = localStorage.getItem('playerName');
+		 playerScore = localStorage.getItem('playerScore');
+	 }
+	else {
+		 playerName = window.prompt();
+		 playerScore = 0;
+
+		 localStorage.setItem( 'playerName', playerName );
+		 localStorage.setItem( 'playerScore', playerScore );
+	}
+
+	var mainPlayer = new Player( playerName , playerScore);
+
+  var game = new Game();
+	game.start();
 })();

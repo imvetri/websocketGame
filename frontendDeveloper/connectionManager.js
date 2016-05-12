@@ -4,13 +4,11 @@
  */
 
 
-window.connectionManager = (function(){
+window.webSocketConnectionManager = (function(){
     var connectionManagerObj = {
-        init : function(){
-            //initiate websockt connection here
-        },
-        sendScore : function(){
-
+        socket : new WebSocket("ws://localhost:8080" , "echo-protocol"),
+        send : function( payload ){
+            this.socket.send( payload );
         },
         close : function(){
             //before window close, bind this function

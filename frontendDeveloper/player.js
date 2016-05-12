@@ -3,25 +3,15 @@
  * This file is a dependency file. Should get executed along with other dependency files before other files get executed
  */
 
-window.player = (function() {
-    var player = {
-        score: 0,
-        DOM: "DOM",
-        init: function () {
-          if( window.gameState['FRESH'] ){
-            var playetName = window.prompt();
-            window.gameState.setPlayerName( playetName );
-          }
-            // else do nothing
-        },
-        initScore: function () {
-            //if player already exists, update the score
-            // else do nothing
-        },
-        increaseScore: function () {
-            //if game connection succeded, send currentScore+1
-        }
+window.Player = (function() {
+
+    var Player = function( name , score ){
+      this.name = name;
+      this.score = score;
+    };
+    Player.prototype.increaseScore = function () {
+      this.score += 1 ;
     };
 
-    return player;
+    return Player;
 })();

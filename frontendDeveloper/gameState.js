@@ -8,6 +8,7 @@
  };
 
  Game.prototype.STATES = [ 'NEW', 'STARTED' , 'PAUSED' ];
+ Game.prototype.players = [];
  Game.prototype.STATE  =  '';
  Game.prototype.setState = function( state ){
    this.STATE = state;
@@ -25,4 +26,7 @@
    this.STATE = 'STARTED'
  };
  Game.prototype.end = function(){
+ };
+ Game.prototype.includePlayer = function( player ){
+   this.players.push( player );
  };

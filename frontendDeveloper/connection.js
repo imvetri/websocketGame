@@ -5,7 +5,7 @@
 
 
 window.connection = (function(){
-    var connection = new WebSocket("ws://"+document.location.hostname+":8000" , "echo-protocol");
+    var connection = new WebSocket("ws://"+document.location.hostname+":8080" , "echo-protocol");
 
     connection.onopen = function() {
         console.info('SOCKET connection OPENED ');

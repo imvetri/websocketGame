@@ -79,11 +79,3 @@
      this.saveGame2Storage();
      this.saveGame2Remote( 'PLAYER_SCORED_UP' );
  };
- Game.prototype.pause = function(){
-   this.STATE = 'PAUSED'
- };
- Game.prototype.resume = function(){
-   this.STATE = 'STARTED'
- };
- Game.prototype.end = function(){
- };

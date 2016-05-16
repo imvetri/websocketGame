@@ -7,6 +7,7 @@ var ws = require('websocket').server;
 
 //custom dependencies
 var serverObj = require('./serverConfig').serverObj;
+var handleControlOnMessageEvent = require('./messageEventHandler').handleControlOnMessageEvent;
 
 //local variables
 var _wsEvent = {
@@ -14,6 +15,7 @@ var _wsEvent = {
 
         if (message.type === 'utf8') {
             console.log('Message recieved - ' + message.utf8Data);
+            handleControlOnMessageEvent ( message.utf8Data );
         }
     },
     onClose: function (reasonCode, description) {

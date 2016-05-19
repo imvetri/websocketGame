@@ -6,7 +6,7 @@
 var ws = require('websocket').server;
 
 //custom dependencies
-var serverObj = require('./serverConfig').serverObj;
+var serverObj = require('./connection').serverObj;
 var handleControlOnMessageEvent = require('./messageEventHandler').handleControlOnMessageEvent;
 
 //local variables

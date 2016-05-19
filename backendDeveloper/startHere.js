@@ -2,13 +2,13 @@
 
 
 //custom dependencies
-var serverConfig = require('./serverConfig'),
+var connection = require('./connection'),
     wsConfig = require('./websocketConfig');
 
 //server local variables
-var _serverObj = serverConfig.serverObj,
-    _serverIP = serverConfig.serverIP,
-    _serverPort = serverConfig.serverPort;
+var _serverObj = connection.serverObj,
+    _serverIP = connection.serverIP,
+    _serverPort = connection.serverPort;
 
 //server executions
 _serverObj.listen( _serverPort , _serverIP , ()=> console.log('Server Listening at port '+ _serverPort) );

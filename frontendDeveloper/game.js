@@ -25,6 +25,7 @@
      // todo : find alternative way to call a function whenever a object gets updted
      this.saveGame2Storage();
      this.player = new Player(  this.gameStatus.playerName , this.gameStatus.playerID ,this.gameStatus.playerScore  );
+     this.saveGame2Remote( 'PLAYER_ONLINE');
 
  };
 
@@ -63,7 +64,7 @@
          eventName : eventName ,
          gameStatus : this.gameStatus
      };
-     connection.send( JSON.stringify( payload ) );
+     connection.post( JSON.stringify( payload ) );
  };
 // message came from server
  Game.prototype.messageReceived = function( message ){

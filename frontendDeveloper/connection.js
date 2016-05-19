@@ -5,8 +5,14 @@
 
 
 window.connection = (function(){
-    var connection = new WebSocket("ws://"+document.location.hostname+":8080" , "echo-protocol");
+    
+    //8080 for local testing and 8000 for deployment on openshift cloud
+    var connection = new WebSocket("ws://"+document.location.hostname+":8000" , "echo-protocol");
 
+    //variables
+    connection.messages = [];
+
+    //events
     connection.onopen = function() {
         console.info('SOCKET connection OPENED ');
     };
@@ -19,6 +25,26 @@ window.connection = (function(){
     };
     connection.onerror = function( err ) {
         console.error('SOCKET connection ERROR: ', err.message, 'Attempting to reconnect socket');
+    };
+
+    //actions
+    connection.post = function ( message ) {
+        // ques the messages
+        this.queue( message );
+        if( this.readyState === this.OPEN )
+            this.sendAll();
+    };
+
+    connection.queue = function ( message ) {
+        this.messages.push( message );
+    };
+    connection.dequeue = function (){
+        return this.messages.shift();
+    };
+    connection.sendAll = function(){
+        while( this.messages.length != 0){
+            this.send(this.dequeue());
+        }
     };
     return connection;
 })();

@@ -10,6 +10,9 @@ var handleControlOnMessageEvent = function( message ){
         case 'NEW_PLAYER_CREATED':
             console.log('NEW_PLAYER_CREATED');
             break;
+        case 'PLAYER_ONLINE':
+            console.log('PLAYER_ONLINE');
+            break;
         case 'PLAYER_SCORED_UP':
             console.log('PLAYER_SCORED_UP');
             break;

@@ -12,8 +12,13 @@ var handleControlOnMessageEvent = function( message ){
             console.log('NEW_PLAYER_CREATED');
             Game.addPlayer( playerDetails );
             break;
+        case 'PLAYER_DELETED':
+            console.log('PLAYER_DELETED');
+            Game.delPlayer( playerDetails );
+            break;
         case 'PLAYER_ONLINE':
             console.log('PLAYER_ONLINE');
+            Game.addPlayer( playerDetails );
             //broadcast new player to other players
             Game.broadcastPlayer();
             break;

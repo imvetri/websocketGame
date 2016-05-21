@@ -16,7 +16,6 @@
     playerScore : 0,
     playerID : 0
  };
-
  //create new player if doesnt exist
  Game.prototype.init = function(){
 
@@ -35,9 +34,30 @@
 //increase player score on doc click
  Game.prototype.bindEvents = function(){
     //player will be able to score
-    document.addEventListener('click' , this.increaseScore.bind(this) );
+    var playArena = document.getElementById('playArena'),
+        resetBtn = document.getElementById('resetBtn');
+     
+    playArena.addEventListener('click' , this.increaseScore.bind(this) );
+    resetBtn.addEventListener('click', this.resetGame.bind(this) );
     connection.onmessage = this.messageReceived.bind( this )
 };
+
+ Game.prototype.resetGame = function(){
+     this.resetGameFromStorage();
+     this.saveGame2Remote( 'PLAYER_DELETED' );
+     this.resetPlayerObj();
+     this.init();
+ };
+ Game.prototype.resetGameFromStorage = function(){
+     for ( var prop in this.playerDetails ){
+        localStorage.setItem( prop , '' );
+     }
+ };
+ Game.prototype.resetPlayerObj = function(){
+     for ( var prop in this.playerDetails ){
+        this.playerDetails[prop] ='';
+     }
+ };
  Game.prototype.promptPlayerName = function(){
      //update playerDetails with new values
      this.playerDetails.playerName = window.prompt();

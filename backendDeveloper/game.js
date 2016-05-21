@@ -6,7 +6,7 @@
  */
 
 //local dependencies
-var Player = require('./player');
+var Player = require('./player').Player;
 
 var Game = function(){
 
@@ -15,16 +15,17 @@ var Game = function(){
 Game.prototype.players = {};
 
 Game.prototype.addPlayer = function( playerDetails ){
-    var newPlayer = new Player ( playerDetails );
+    var newPlayer = new Player( playerDetails );
     this.players[ newPlayer.id ] = newPlayer;
 };
 
-Game.prototype.removePlayer = function( playerIP ){
-
+Game.prototype.delPlayer = function( playerDetails ){
+    var id = playerDetails.playerID;
+    delete this.players[id];
 };
 
 Game.prototype.scoreUpPlayer = function( playerDetails ){
-    this.players[ playerID.id].playerScore +=  1;
+    this.players[ playerDetails.playerID].score +=  1;
 };
 
 Game.prototype.broadcastPlayer = function(){

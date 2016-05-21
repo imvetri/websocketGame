@@ -24,7 +24,7 @@ window.connection = (function(){
         console.info('SOCKET connection CLOSED ', e.reason );
     };
     connection.onerror = function( err ) {
-        console.error('SOCKET connection ERROR: ', err.message, 'Attempting to reconnect socket');
+        console.error('SOCKET connection ERROR ', err.message, 'Attempting to reconnect socket');
     };
 
     //actions

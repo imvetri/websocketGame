@@ -4,5 +4,5 @@
 
     var game = new Game();
     game.init(); //initialises this player to game
-    game.startBindingEvents(); //start listening to player's click
+    game.bindEvents(); //start listening to player's click
 })();

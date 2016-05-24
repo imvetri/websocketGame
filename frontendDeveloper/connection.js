@@ -18,7 +18,7 @@ window.connection = (function(){
     };
     connection.onmessage = function( e ) {
         console.info('SOCKET message RECEIVED ');
-        console.info('Message:', e.data);
+        judgeEvent( e.data );
     };
     connection.onclose = function( e ) {
         console.info('SOCKET connection CLOSED ', e.reason );

@@ -9,12 +9,12 @@ var http = require('http');
 var ipConfig = require('./environmentIPConfig');
 var respondWithFile = require('./resourceProvider').respondWithFile;
 
+
 //functions
 var serverOnConnection = function( request , response ){
-
     respondWithFile( request , response );
-
 };
+
 
 
 module.exports = {
@@ -22,5 +22,4 @@ module.exports = {
     serverObj : http.createServer( serverOnConnection ) ,
     serverPort : ipConfig.port,
     serverIP : ipConfig.ipaddress
-
 };

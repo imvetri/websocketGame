@@ -92,8 +92,10 @@
 // message comes from server
  Game.prototype.messageReceived = function( message ){
      var messageObj = JSON.parse( message.data );
+     console.log(messageObj);
+
      if ( messageObj.eventName == "OTHERS_SCORE" ) {
-         console.log('other Players score received',messageObj.playerID+'   score '+playerScore);
+         console.log('other Players score received',messageObj.playerDetails.playerID+'   score '+playerScore);
      }
 
  };

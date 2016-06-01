@@ -32,11 +32,18 @@ Game.prototype.scoreUpPlayer = function( playerDetails ){
 };
 
 Game.prototype.broadcastPlayer = function(){
-    var message;
     console.log('this.players');
-    var test = this.players;
+    var players = this.players;
     console.log('test');
-    
+    Object.getOwnPropertyNames(players ).forEach( function(e){
+
+      var message = {
+          eventName : 'PLAYER_SCORED_UP' ,
+          playerDetails : JSON.stringify( this.playerDetails )
+      }
+      players[e].connection.send(JSON.stringify(message))
+      console.log('done   ' );
+    });
 };
 
 global.Game = new Game();

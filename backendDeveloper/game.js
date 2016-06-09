@@ -37,10 +37,20 @@ Game.prototype.broadcastPlayer = function(){
     console.log('test');
     Object.getOwnPropertyNames(players ).forEach( function(e){
 
+      var playerDetail = {
+        id:players[e].id,
+        name:players[e].name,
+        score:players[e].score
+      };
       var message = {
           eventName : 'PLAYER_SCORED_UP' ,
-          playerDetails : JSON.stringify( this.playerDetails )
+          playerDetails : JSON.stringify( playerDetail )
       }
+      console.log();
+
+
+
+      console.log(message);
       players[e].connection.send(JSON.stringify(message))
       console.log('done   ' );
     });

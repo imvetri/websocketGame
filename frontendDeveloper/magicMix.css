@@ -9,16 +9,10 @@ header{
 /*
 	copying from codepen ;) STARTS HERE
 */
-#container {
-	margin-top: 20px;
-	margin-left: 30px;
-	position: relative;
-	background: #45453f;
-}
 
 .pulse {
-	width: 100px;
-	height: 100px;
+	width: 50px;
+	height: 50px;
 	border: 5px solid #f7f14c;
 	-webkit-border-radius: 50%;
 	-moz-border-radius: 50%;
@@ -34,8 +28,8 @@ header{
 	-webkit-border-radius: 50%;
 	-moz-border-radius: 50%;
 	border-radius: 50%;
-	height: 150px;
-	width: 150px;
+	height: 100px;
+	width: 100px;
 	-webkit-animation: pulse 3s ease-out;
 	-moz-animation: pulse 3s ease-out;
 	animation: pulse 3s ease-out;

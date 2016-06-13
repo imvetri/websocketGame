@@ -31,29 +31,28 @@ Game.prototype.scoreUpPlayer = function( playerDetails ){
     this.players[ playerDetails.playerID].score +=  1;
 };
 
-Game.prototype.broadcastPlayer = function(){
-    console.log('this.players');
-    var players = this.players;
+Game.prototype.broadcastPlayer = function( scoredPlayerDetail ){
+    console.log('this.players  ');
+    var allPlayers = this.players;
+
+    var broadcastExceptSourcePlayer = function( thisPlayer ){
+
+        if( scoredPlayerDetail.playerID != allPlayers[thisPlayer].id ){
+
+            var message = {
+                eventName : 'OTHER_PLAYER_SCORED' ,
+                playerDetails : JSON.stringify( scoredPlayerDetail )
+            };
+
+            console.log(message);
+            allPlayers[thisPlayer].connection.send(JSON.stringify(message));
+            console.log('done   ' );
+        }
+
+    };
+
     console.log('test');
-    Object.getOwnPropertyNames(players ).forEach( function(e){
-
-      var playerDetail = {
-        id:players[e].id,
-        name:players[e].name,
-        score:players[e].score
-      };
-      var message = {
-          eventName : 'PLAYER_SCORED_UP' ,
-          playerDetails : JSON.stringify( playerDetail )
-      }
-      console.log();
-
-
-
-      console.log(message);
-      players[e].connection.send(JSON.stringify(message))
-      console.log('done   ' );
-    });
+    Object.getOwnPropertyNames( allPlayers ).forEach( broadcastExceptSourcePlayer );
 };
 
 global.Game = new Game();

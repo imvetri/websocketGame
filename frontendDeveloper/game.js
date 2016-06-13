@@ -94,8 +94,8 @@
      var messageObj = JSON.parse( message.data );
      console.log(messageObj);
 
-     if ( messageObj.eventName == "OTHERS_SCORE" ) {
-         console.log('other Players score received',messageObj.playerDetails.playerID+'   score '+playerScore);
+     if ( messageObj.eventName == "OTHER_PLAYER_SCORED" ) {
+         console.log('other Players score received',messageObj.playerDetails.playerID+'   score '+ messageObj.playerDetails.playerScore);
      }
 
  };

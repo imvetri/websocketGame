@@ -14,7 +14,7 @@ var handleControlOnMessageEvent = function( message , playerConnection ){
         case 'PLAYER_SCORED_UP':
             console.log('PLAYER_SCORED_UP');
             Game.scoreUpPlayer( playerDetails );
-            Game.broadcastPlayer();
+            Game.broadcastPlayer( playerDetails );
 
             break;
         case 'PLAYER_DELETED':

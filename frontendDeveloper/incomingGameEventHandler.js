@@ -20,6 +20,9 @@ var judgeEvent = (function(){
             case 'PLAYER_SCORED_UP':
                 console.log('PLAYER_SCORED_UP');
                 break;
+            case 'OTHER_PLAYER_SCORED':
+                console.log('OTHER_PLAYER_SCORED');
+                break;
         }
     };
 })();

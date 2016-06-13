@@ -91,11 +91,12 @@
  };
 // message comes from server
  Game.prototype.messageReceived = function( message ){
-     var messageObj = JSON.parse( message.data );
+     var messageObj = JSON.parse( message.data),
+         playerDetails = JSON.parse( messageObj.playerDetails );
      console.log(messageObj);
 
      if ( messageObj.eventName == "OTHER_PLAYER_SCORED" ) {
-         console.log('other Players score received',messageObj.playerDetails.playerID+'   score '+ messageObj.playerDetails.playerScore);
+         console.log('other Players score received',messageObj.playerDetails+'   score '+ messageObj.playerDetails);
      }
 
  };

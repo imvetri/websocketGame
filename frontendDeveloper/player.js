@@ -5,11 +5,15 @@
 
 window.Player = (function() {
 
+    var playerTemplate =  document.querySelector('#playerTemplate').querySelector('.player');
+
     //pass game status only to thisplayer.
     var Player = function( playerName , playerID , playerScore ){
         this.name = playerName ;
         this.id = playerID ;
         this.score = Number ( playerScore );
+        this.playerDOM = playerTemplate.cloneNode(true);
+        document.appendChild ( this.playerDOM );
     };
     Player.prototype.increaseScore = function () {
         this.score = 1 + this.score ;

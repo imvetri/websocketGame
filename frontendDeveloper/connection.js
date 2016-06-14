@@ -29,6 +29,7 @@ window.connection = (function(){
         console.error('SOCKET connection ERROR ', err.message, 'Attempting to reconnect socket');
     };
 
+    //bossue, illi bug irudhey
     //actions
     connection.post = function ( message ) {
         // ques the messages

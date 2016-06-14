@@ -1,0 +1,15 @@
+body{
+		height:100%;
+		margin :0px;
+}
+header{
+		height : 95vh;
+		background-color: darkseagreen;
+}
+
+footer{
+		background-color: cyan;
+		display : flex;
+		flex-direction: column;
+		height : 5vh;
+}

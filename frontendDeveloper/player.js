@@ -5,16 +5,44 @@
 
 window.Player = (function() {
 
-    var playerTemplate =  document.querySelector('#playerTemplate').querySelector('.player');
+    var playerTemplate =  document.querySelector('#playerTemplate').querySelector('.player'),
+        header = document.querySelector('#playArena');
 
     //pass game status only to thisplayer.
     var Player = function( playerName , playerID , playerScore ){
         this.name = playerName ;
         this.id = playerID ;
         this.score = Number ( playerScore );
-        this.playerDOM = playerTemplate.cloneNode(true);
-        document.appendChild ( this.playerDOM );
+
+        this.createPlayerDOM();
+        this.bindEvents();
     };
+    Player.prototype.createPlayerDOM = function() {
+        this.playerDOM = playerTemplate.cloneNode(true);
+        header.appendChild ( this.playerDOM );
+    };
+    Player.prototype.bindEvents = function() {
+        /*
+            player listens to -
+                JOIN_REQUEST
+                DAMAGE
+
+            player emits -
+                JOIN_REQUEST
+                DAMAGE
+
+         */
+
+        /*
+            decrease opponent score if player clicks on it
+            send join request to opponent if player holds opponent
+            pulse opponent with white color if opponent sends join request
+            shoot player away if opponent rejects join request
+
+            pulse player
+         */
+    };
+
     Player.prototype.increaseScore = function () {
         this.score = 1 + this.score ;
     };

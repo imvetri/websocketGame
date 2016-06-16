@@ -5,7 +5,7 @@
 
 window.Player = (function() {
 
-    var playerTemplate =  document.querySelector('#playerTemplate').querySelector('.player'),
+    var playerTemplate =  document.querySelector('#playerTemplate').content.querySelector('.player'),
         header = document.querySelector('#playArena');
 
     //pass game status only to thisplayer.

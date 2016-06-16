@@ -8,7 +8,7 @@
  var Game = function(){
  };
 
- Game.prototype.otherPlayers = {};
+ Game.prototype.otherPlayers = [];
  Game.prototype.player = {};
  Game.prototype.playerDetails = {
     ACTIVE : false,
@@ -96,6 +96,10 @@
      console.log(messageObj);
 
      if ( messageObj.eventName == "OTHER_PLAYER_SCORED" ) {
+         var oneAnotherPlayer = this.createPlayer( playerDetails.playerName ,
+                                                   playerDetails.playerID ,
+                                                   playerDetails.playerScore );
+         this.otherPlayers.push(oneAnotherPlayer) ;
          console.log('other Players score received',messageObj.playerDetails+'   score '+ messageObj.playerDetails);
      }
 

@@ -6,6 +6,8 @@
 
 .player{
 	position : relative;
+	top: 50vw;
+  left: 50vw;
 }
 /* player sizes */
 .sSize{

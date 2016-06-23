@@ -43,7 +43,11 @@ window.Player = (function() {
          */
     };
 
+    Player.prototype.updateDOMScore = function(){
+        this.playerDOM.innerText = this.score;
+    }
     Player.prototype.increaseScore = function () {
+        this.updateDOMScore();
         this.score = 1 + this.score ;
     };
     return Player;

@@ -102,6 +102,9 @@
                                                          playerDetails.playerScore );
             this.otherPlayers[oneAnotherPlayer.id] = oneAnotherPlayer;
           }
+          else{
+            this.otherPlayers[playerDetails.playerID ].increaseScore();
+          }
          console.log('other Players score received',messageObj.playerDetails+'   score '+ messageObj.playerDetails);
      }
 
